@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Plan | MacroFitnessScale</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="setup-screen">
+
+      <div class="logo">MACROFITNESSSCALE</div>
+
+      <div class="setup-header">
+        <h1>LET'S BUILD<br>YOUR PLAN</h1>
+
+        <p>
+          Tell us a little about yourself so MacroFitnessScale
+          can personalize your journey.
+        </p>
+      </div>
+
+      <form id="setupForm">
+
+        <label for="goal">What's your main goal?</label>
+        <select id="goal" required>
+          <option value="">Select your goal</option>
+          <option value="lose-fat">Lose Fat</option>
+          <option value="build-muscle">Build Muscle</option>
+          <option value="improve-fitness">Improve Fitness</option>
+          <option value="get-stronger">Get Stronger</option>
+          <option value="live-healthier">Live Healthier</option>
+        </select>
+
+        <label for="experience">Fitness experience</label>
+        <select id="experience" required>
+          <option value="">Select your level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+
+        <label for="location">Where do you train?</label>
+        <select id="location" required>
+          <option value="">Select a location</option>
+          <option value="home">Home</option>
+          <option value="gym">Gym</option>
+          <option value="outdoors">Outdoors</option>
+          <option value="mix">Mix of locations</option>
+        </select>
+
+        <label for="duration">How much time do you have?</label>
+        <select id="duration" required>
+          <option value="">Select workout time</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60+ minutes</option>
+        </select>
+
+        <label for="weight">Current weight</label>
+
+        <div class="weight-row">
+          <input
+            type="number"
+            id="weight"
+            placeholder="e.g. 70"
+            min="1"
+            required
+          >
+
+          <select id="weightUnit">
+            <option value="kg">kg</option>
+            <option value="lb">lb</option>
+          </select>
+        </div>
+
+        <button type="submit" class="primary-button">
+          CREATE MY PLAN
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("setupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const profile = {
+        goal: document.getElementById("goal").value,
+        experience: document.getElementById("experience").value,
+        location: document.getElementById("location").value,
+        duration: document.getElementById("duration").value,
+        weight: document.getElementById("weight").value,
+        weightUnit: document.getElementById("weightUnit").value
+      };
+
+      localStorage.setItem("macroFitnessProfile", JSON.stringify(profile));
+
+      window.location.href = "home.html";
+    });
+  </script>
+
+</body>
+</html>

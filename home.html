@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | MacroFitnessScale</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="home-screen">
+
+      <!-- Header -->
+      <header class="home-header">
+        <div>
+          <div class="logo">MACROFITNESSSCALE</div>
+          <p id="greeting">Good morning 👋</p>
+          <h1>Ready to make progress?</h1>
+        </div>
+
+        <button class="profile-button" onclick="openProfile()">
+          👤
+        </button>
+      </header>
+
+
+      <!-- Today's Progress -->
+      <section class="dashboard-card progress-card">
+
+        <div class="card-heading">
+          <div>
+            <span class="card-label">TODAY'S PROGRESS</span>
+            <h2>3 / 5 completed</h2>
+          </div>
+
+          <div class="streak">
+            🔥 7 DAYS
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 60%;"></div>
+        </div>
+
+      </section>
+
+
+      <!-- Workout -->
+      <section class="dashboard-card">
+
+        <span class="card-label">TODAY'S WORKOUT</span>
+
+        <h2>Full Body Strength</h2>
+
+        <p class="card-subtitle">30 min • Beginner</p>
+
+        <button class="secondary-button" onclick="startWorkout()">
+          START WORKOUT
+        </button>
+
+      </section>
+
+
+      <!-- Nutrition -->
+      <section class="dashboard-card">
+
+        <span class="card-label">TODAY'S NUTRITION</span>
+
+        <div class="nutrition-main">
+          <strong>1,420</strong>
+          <span>/ 2,200 kcal</span>
+        </div>
+
+        <div class="macro-row">
+          <span>Protein</span>
+          <strong>98 / 160g</strong>
+        </div>
+
+        <div class="macro-bar">
+          <div style="width: 61%;"></div>
+        </div>
+
+        <div class="macro-row">
+          <span>Carbs</span>
+          <strong>145 / 250g</strong>
+        </div>
+
+        <div class="macro-bar">
+          <div style="width: 58%;"></div>
+        </div>
+
+        <div class="macro-row">
+          <span>Fat</span>
+          <strong>42 / 70g</strong>
+        </div>
+
+        <div class="macro-bar">
+          <div style="width: 60%;"></div>
+        </div>
+
+        <button class="secondary-button" onclick="logFood()">
+          LOG FOOD
+        </button>
+
+      </section>
+
+
+      <!-- Water -->
+      <section class="dashboard-card">
+
+        <span class="card-label">WATER</span>
+
+        <div class="water-row">
+          <button onclick="changeWater(-1)">−</button>
+
+          <div>
+            <strong id="waterCount">5</strong>
+            <span>/ 8 glasses</span>
+          </div>
+
+          <button onclick="changeWater(1)">+</button>
+        </div>
+
+      </section>
+
+
+      <!-- Growth Challenge -->
+      <section class="dashboard-card">
+
+        <span class="card-label">TODAY'S GROWTH CHALLENGE</span>
+
+        <div class="challenge-tag">
+          DISCIPLINE
+        </div>
+
+        <h2>Take the smallest step.</h2>
+
+        <p class="challenge-text">
+          Choose one important task you've been postponing.
+          Work on it for just 10 minutes without distractions.
+        </p>
+
+        <button class="secondary-button" onclick="completeChallenge()">
+          COMPLETE
+        </button>
+
+      </section>
+
+
+      <!-- Goal -->
+      <section class="dashboard-card">
+
+        <span class="card-label">YOUR GOAL</span>
+
+        <h2>Build a consistent fitness routine.</h2>
+
+        <div class="goal-progress">
+          <div class="goal-progress-fill" style="width: 65%;"></div>
+        </div>
+
+        <div class="goal-footer">
+          <span>Progress</span>
+          <strong>65%</strong>
+        </div>
+
+      </section>
+
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+
+        <button class="nav-item active" onclick="goHome()">
+          <span>⌂</span>
+          Home
+        </button>
+
+        <button class="nav-item" onclick="goFitness()">
+          <span>🏋</span>
+          Fitness
+        </button>
+
+        <button class="nav-item" onclick="goMacros()">
+          <span>🍎</span>
+          Macros
+        </button>
+
+        <button class="nav-item" onclick="goGrowth()">
+          <span>🧠</span>
+          Growth
+        </button>
+
+        <button class="nav-item" onclick="goProgress()">
+          <span>📈</span>
+          Progress
+        </button>
+
+      </nav>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    let water = 5;
+
+    function changeWater(amount) {
+      water += amount;
+
+      if (water < 0) water = 0;
+      if (water > 8) water = 8;
+
+      document.getElementById("waterCount").textContent = water;
+    }
+
+    function startWorkout() {
+      alert("Workout screen coming next.");
+    }
+
+    function logFood() {
+      alert("Nutrition screen coming next.");
+    }
+
+    function completeChallenge() {
+      alert("Growth challenge completed! 🔥");
+    }
+
+    function openProfile() {
+      alert("Profile coming soon.");
+    }
+
+    function goHome() {
+      window.location.href = "home.html";
+    }
+
+    function goFitness() {
+      alert("Fitness screen coming next.");
+    }
+
+    function goMacros() {
+      alert("Macros screen coming next.");
+    }
+
+    function goGrowth() {
+      alert("Growth screen coming next.");
+    }
+
+    function goProgress() {
+      alert("Progress screen coming next.");
+    }
+
+  </script>
+
+</body>
+</html>
