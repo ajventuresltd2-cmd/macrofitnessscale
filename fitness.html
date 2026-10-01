@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness | MacroFitnessScale</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <main class="app">
+    <section class="home-screen">
+
+      <header class="home-header">
+        <div>
+          <p class="eyebrow">MACROFITNESSSCALE</p>
+          <h1>Today's Workout</h1>
+          <p class="muted">Build strength. Build consistency.</p>
+        </div>
+
+        <a href="home.html" class="profile-btn" aria-label="Back to Home">⌂</a>
+      </header>
+
+      <section class="workout-hero">
+        <div>
+          <p class="eyebrow">FULL BODY STRENGTH</p>
+          <h2>30 Minute Workout</h2>
+          <p class="muted">Beginner • Full Body • 6 Exercises</p>
+        </div>
+
+        <div class="workout-status">
+          <strong id="exerciseCount">0/6</strong>
+          <span>completed</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">WORKOUT PLAN</p>
+            <h2>Exercises</h2>
+          </div>
+        </div>
+
+        <div class="exercise-list">
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>1. Bodyweight Squat</strong>
+              <span>3 sets × 12 reps • Rest 60 sec</span>
+            </div>
+          </label>
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>2. Push-Up</strong>
+              <span>3 sets × 10 reps • Rest 60 sec</span>
+            </div>
+          </label>
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>3. Glute Bridge</strong>
+              <span>3 sets × 15 reps • Rest 45 sec</span>
+            </div>
+          </label>
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>4. Dumbbell Row</strong>
+              <span>3 sets × 10 reps • Rest 60 sec</span>
+            </div>
+          </label>
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>5. Shoulder Press</strong>
+              <span>3 sets × 10 reps • Rest 60 sec</span>
+            </div>
+          </label>
+
+          <label class="exercise-item">
+            <input type="checkbox" class="exercise-check">
+            <div>
+              <strong>6. Plank</strong>
+              <span>3 sets × 30 sec • Rest 45 sec</span>
+            </div>
+          </label>
+
+        </div>
+      </section>
+
+      <section class="card timer-card">
+        <div>
+          <p class="eyebrow">REST TIMER</p>
+          <div class="timer" id="timer">60</div>
+          <p class="muted">seconds</p>
+        </div>
+
+        <div class="timer-controls">
+          <button type="button" id="minusTen">−10</button>
+          <button type="button" id="pauseTimer">PAUSE</button>
+          <button type="button" id="plusTen">+10</button>
+        </div>
+      </section>
+
+      <button type="button" class="primary-btn" id="completeWorkout">
+        COMPLETE WORKOUT
+      </button>
+
+      <nav class="bottom-nav">
+        <a href="home.html">Home</a>
+        <a href="fitness.html" class="active">Fitness</a>
+        <a href="#">Macros</a>
+        <a href="#">Growth</a>
+        <a href="#">Progress</a>
+      </nav>
+
+    </section>
+  </main>
+
+  <script>
+
+    const checks = document.querySelectorAll(".exercise-check");
+    const exerciseCount = document.getElementById("exerciseCount");
+
+    function updateExerciseCount() {
+      const completed = document.querySelectorAll(".exercise-check:checked").length;
+      exerciseCount.textContent = completed + "/6";
+    }
+
+    checks.forEach(check => {
+      check.addEventListener("change", updateExerciseCount);
+    });
+
+
+    let seconds = 60;
+    let timerRunning = true;
+
+    const timerDisplay = document.getElementById("timer");
+    const pauseButton = document.getElementById("pauseTimer");
+
+    function updateTimer() {
+      timerDisplay.textContent = seconds;
+    }
+
+    const timer = setInterval(() => {
+
+      if (timerRunning && seconds > 0) {
+        seconds--;
+        updateTimer();
+      }
+
+    }, 1000);
+
+
+    document.getElementById("minusTen").addEventListener("click", () => {
+      seconds = Math.max(0, seconds - 10);
+      updateTimer();
+    });
+
+
+    document.getElementById("plusTen").addEventListener("click", () => {
+      seconds += 10;
+      updateTimer();
+    });
+
+
+    pauseButton.addEventListener("click", () => {
+
+      timerRunning = !timerRunning;
+
+      pauseButton.textContent = timerRunning ? "PAUSE" : "RESUME";
+
+    });
+
+
+    document.getElementById("completeWorkout").addEventListener("click", () => {
+
+      const completed = document.querySelectorAll(".exercise-check:checked").length;
+
+      if (completed < 6) {
+        alert("Complete all 6 exercises before finishing your workout.");
+        return;
+      }
+
+      localStorage.setItem("workout_completed", "true");
+
+      alert(
+        "🔥 WORKOUT COMPLETE!\n\n" +
+        "Full Body Strength\n" +
+        "30 minutes\n" +
+        "6 exercises\n" +
+        "18 sets\n\n" +
+        "Great work. Keep the streak alive."
+      );
+
+      window.location.href = "home.html";
+
+    });
+
+  </script>
+
+</body>
+</html>
