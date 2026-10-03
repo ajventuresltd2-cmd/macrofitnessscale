@@ -109,9 +109,26 @@ select:focus-visible {
 
 .welcome-screen {
   width: 100%;
-  max-width: 560px;
+  max-width: 1180px;
   min-height: 100vh;
   margin: auto;
+
+   .welcome-screen {
+  align-items: flex-start;
+}
+
+.welcome-screen .hero {
+  max-width: 760px;
+}
+
+.welcome-screen .primary-button {
+  max-width: 520px;
+}
+
+.welcome-screen .login-text {
+  width: 100%;
+  max-width: 520px;
+}
 
   padding:
     clamp(32px, 8vw, 80px)
@@ -801,35 +818,6 @@ select:focus-visible {
 
   .hero {
     margin-top: 55px;
-  }
-
-}
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .home-screen {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .dashboard-card {
-    padding: 16px;
-  }
-
-  .bottom-nav {
-    height: 66px;
-  }
-
-  .nav-item {
-    font-size: 9px;
   }
 
 }
